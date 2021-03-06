@@ -20,7 +20,6 @@ app.use('/',authRoutes)
 app.get('/',(req,res)=>{
     res.status(200).send(Template())
 })
-
 /*To handle auth-related errors thrown by express-jwt when it tries to validate JWT
 tokens in incoming requests, we need to add the following error-catching code to the
 Express app configuration in mern-skeleton/server/express.js, near the end of
@@ -38,6 +37,5 @@ app.use((err, req, res, next) => {
     console.log(err)
     }
    })
-   
 
 export default app

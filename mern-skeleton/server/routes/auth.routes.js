@@ -13,10 +13,8 @@ const router = express.Router()
 /*A POST request to the signin route and a GET request to the signout route will
 invoke the corresponding controller functions defined in the auth.controller.js
 file */
-router.route('/auth/signin')
-    .post(authCtrl.signin)
-router.route('/auth/signout')
-    .get(authCtrl.signout)
+router.route('/auth/signin').post(authCtrl.signin)
+router.route('/auth/signout').get(authCtrl.signout)
 
 
 export default router

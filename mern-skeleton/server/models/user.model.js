@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import crypto from 'crypto'
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -12,16 +13,17 @@ const UserSchema = new mongoose.Schema({
         match: [/.+\@.+\..+/, 'Please fill a valid email address'],
         required: 'Email is required'
         },
-    created: {
+        hashed_password: {
+            type: String,
+            required: "Password is required"
+        },
+        salt: String,
+        updated: Date,
+        created: {
         type: Date,
         default: Date.now
-    },
-    updated: Date,
-    hashed_password: {
-        type: String,
-        required: "Password is required"
-    },
-    salt: String               
+    }
+                   
  })
 /*The password string that's provided by the user is not stored directly in the user
 document. Instead, it is handled as a virtual field.

@@ -1,11 +1,16 @@
+import jwt from 'jsonwebtoken'
+import expressJwt from 'express-jwt'
+import User from '../models/user.model'
+import config from './../../config/config'
+
+
 /*The auth controller functions in server/controllers/auth.controller.js will
 not only handle requests to the signin and signout routes, but also provide JWT
 and express-jwt functionality to enable authentication and authorization for
 protected user API endpoints.*/
-import User from '../models/user.model'
-import jwt from 'jsonwebtoken'
-import expressJwt from 'express-jwt'
-import config from './../../config/config'
+
+
+
 /**The POST request object receives the email and password in req.body. This email is
 used to retrieve a matching user from the database. Then, the password
 authentication method defined in UserSchema is used to verify the password that's
@@ -73,7 +78,8 @@ We can add requireSignin to any route that should be protected against
 unauthenticated access. */
 const requireSignin = expressJwt({
     secret: config.jwtSecret,
-    userProperty: 'auth'
+    userProperty: 'auth',
+    algorithms: ['HS256']
    })
 
 
